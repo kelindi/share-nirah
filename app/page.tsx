@@ -8,7 +8,7 @@ export default function Page(props) {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
   const [retreivalLink, setRetreivalLink] = useState(null);
-  const baseURL = process.env.PUBLIC_URL || window.location.origin;
+  const baseURL = process.env.PUBLIC_URL
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
