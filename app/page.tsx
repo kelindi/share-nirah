@@ -8,7 +8,7 @@ export default function Page(props) {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
   const [retreivalLink, setRetreivalLink] = useState(null);
-
+  const baseURL = process.env.PUBLIC_URL || window.location.origin;
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
@@ -28,7 +28,6 @@ export default function Page(props) {
         },
       });
       console.log('https://gateway.estuary.tech/gw/ipfs/' + response.data.cid);
-      setRetreivalLink('https://gateway.estuary.tech/gw/ipfs/' + response.data.cid);
       return response.data.cid;
     } catch (error) {
       console.error(error);
@@ -62,7 +61,7 @@ export default function Page(props) {
         }),
       });
       const data = await response.json();
-      console.log(data)
+      setRetreivalLink(baseURL+ data.nanoId);
       return data
     } catch (error) {
       console.log(error);
@@ -82,6 +81,7 @@ export default function Page(props) {
     }
   };
 
+  
   return (
     <DefaultLayout>
       <div>
@@ -89,7 +89,7 @@ export default function Page(props) {
         <button onClick={() => upload()}>Upload</button>
         <div>Progress: {progress}%</div>
       </div>
-
+      
       {retreivalLink && <div>Your file is retrivable at: <a href={retreivalLink}>{retreivalLink}</a></div>}
     </DefaultLayout>
   );

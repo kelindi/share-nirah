@@ -16,6 +16,7 @@ export default function Page({ params }: { params: { id: string } }) {
         },
       });
       const data = await response.json();
+      console.log(data)
       setCid(data);
 
 
@@ -25,7 +26,8 @@ export default function Page({ params }: { params: { id: string } }) {
   }, []);
   
   
-  return <DefaultLayout>{cid}
-  <img src={"https://gateway.estuary.tech/gw/ipfs/"+cid}></img>
+  return <DefaultLayout>
+    <div>Your file is available at: <a href={"https://gateway.estuary.tech/gw/ipfs/" + cid}>{"https://gateway.estuary.tech/gw/ipfs/" + cid}</a></div>
+    <div>Native file viewing is coming soon...</div>
   </DefaultLayout>;
 }

@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       res.status(200).json(newLink);
       return;
     } catch (error) {
+      console.log('asdasdasd')
       console.error(error);
       res.status(500).json({ error: error.message });
     }
