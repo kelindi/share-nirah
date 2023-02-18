@@ -16,9 +16,11 @@ export default function Page({ params }: { params: { id: string } }) {
         },
       });
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       setCid(data);
-
+      // let metadata = await axios.head(`http://localhost:1313/gw/ipfs/${data}`);
+      let metadata = await axios.head(`http://localhost:1313/gw/ipfs/${data}`);
+      console.log(metadata.headers['content-type']);
 
     };
     

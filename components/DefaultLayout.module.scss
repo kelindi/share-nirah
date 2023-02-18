@@ -1,10 +1,69 @@
 .body {
-  color: white;
+  // color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 0, 0);
+  background: rgb(14, 16, 16);
   height: 100vh;
+  // background-color: #000000;
+  color:white;
+  z-index: 1;
+  font-family: 'Satoshi-Variable';
+  font-weight: 500;
 }
 
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+
+
+.children {
+  z-index: 3;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 28% 0%
+  }
+
+  50% {
+    background-position: 73% 100%
+  }
+
+  100% {
+    background-position: 28% 0%
+  }
+}
+
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 28% 0%
+  }
+
+  50% {
+    background-position: 73% 100%
+  }
+
+  100% {
+    background-position: 28% 0%
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 28% 0%
+  }
+
+  50% {
+    background-position: 73% 100%
+  }
+
+  100% {
+    background-position: 28% 0%
+  }
+}
