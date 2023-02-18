@@ -1,9 +1,9 @@
 import DefaultMetaTags from '@components/DefaultMetaTags';
 
 export default async function Head({ params }) {
-  const title = 'example';
-  const description = 'CHANGEME: description for your application using next-sass';
-  const url = 'CHANGEME: your-production-url.tld';
+  const title = 'Nirah;
+  const description = 'Decentralized file sharing';
+  const url = 'Nirah.xyz';
 
   // SUMMARY_LARGE_IMAGE: 1500x785
   return (
