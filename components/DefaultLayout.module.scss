@@ -1,16 +1,17 @@
 .body {
-  // color: white;
+  position:fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(14, 16, 16);
+  background: #0E1010;
   height: 100vh;
-  // background-color: #000000;
-  color:white;
+  width: 100vw;
+  color:#E2FCFC;
   z-index: 1;
   font-family: 'Satoshi-Variable';
   font-weight: 500;
+  font-size:12px;
 }
 
 .nav {
@@ -20,6 +21,13 @@
   padding: 1rem;
 }
 
+.logo {
+  width: 48px;
+  height: auto;
+  color: white;
+  text-decoration: none;
+  z-index: 2;
+}
 
 
 .children {

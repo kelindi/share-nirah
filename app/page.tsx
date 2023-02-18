@@ -3,7 +3,7 @@ import '@root/global.scss';
 import DefaultLayout from '@components/DefaultLayout';
 import React, { useState,useCallback } from 'react';
 import axios from 'axios';
-import styles from '@styles/Input.module.scss';
+import styles from '@styles/Upload.module.scss';
 import { useDropzone,FileWithPath } from 'react-dropzone';
 
 export default function Page(props) {
@@ -118,15 +118,17 @@ export default function Page(props) {
 
         {Files.length > 0 && (
           
-          <div>
-            <div className={styles.file}>
-              <div>{(Files[0] as FileWithPath).path}</div>
+          <div className={styles.center}>
+            <div className={styles.fileCntr}>
+              <div className={styles.file}>
+                <div>{(Files[0] as FileWithPath).path}</div>
+                </div>
               <button  className={styles.removeFile} onClick={() => removeFile()}>X</button>
             </div>
             <div className={styles.uploadButtonCntr}>
             <button className={styles.uploadButton} onClick={() => upload()}>
               Upload
-              </button>
+            </button>
             </div>
             <div>Progress: {progress}%</div>
           </div>
