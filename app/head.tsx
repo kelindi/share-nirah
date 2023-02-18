@@ -1,7 +1,7 @@
 import DefaultMetaTags from '@components/DefaultMetaTags';
 
 export default async function Head({ params }) {
-  const title = 'Nirah;
+  const title = 'Nirah';
   const description = 'Decentralized file sharing';
   const url = 'Nirah.xyz';
 
