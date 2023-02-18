@@ -1,9 +1,9 @@
 import DefaultMetaTags from '@components/DefaultMetaTags';
 
 export default async function Head({ params }) {
-  const title = 'Nirah';
+  const title = 'Share.Nirah';
   const description = 'Decentralized file sharing';
-  const url = 'Nirah.xyz';
+  const url = 'share.Nirah.xyz';
 
   // SUMMARY_LARGE_IMAGE: 1500x785
   return (

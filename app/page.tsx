@@ -89,6 +89,7 @@ export default function Page(props) {
         console.log('No file selected');
         return;
       }
+      setProgress(0.1);
       let key = await getKey();
       let cid = await uploadToEstuary(key);
       setRetreivalLink(baseURL + cid)
@@ -116,12 +117,12 @@ export default function Page(props) {
   
 
 
-        {Files.length > 0 && (
+        {(Files.length > 0) && (
           
           <div className={styles.center}>
             <div className={styles.fileCntr}>
               <div className={styles.file}>
-                <div>{(Files[0] as FileWithPath).path}</div>
+                {(Files[0] as FileWithPath).path}
                 </div>
               <button  className={styles.removeFile} onClick={() => removeFile()}>X</button>
             </div>
@@ -130,14 +131,32 @@ export default function Page(props) {
               Upload
             </button>
             </div>
-            <div>Progress: {progress}%</div>
+            {progress > 0 && (
+        <div className={styles.progress}>
+        <div
+  style={{
+    backgroundColor: '#E2FCFC',
+    height: '100%',
+    width: `${progress}%`,
+    transition: 'width 0.1s linear',
+    fontSize: 20,
+    
+          }}/>
+        <div className={styles.progressTxt}>
+                  {progress}%  
+                  </div>
+          
+</div>
+      )}
           </div>
         )}
       </div>
+      
+
 
       {retreivalLink && (
-        <div>
-          Your file is retrivable at: <a href={retreivalLink}>{retreivalLink}</a>
+        <div className={styles.retrieve}>
+          <p>Your file is retrivable at:</p> <a href={retreivalLink}>{retreivalLink}</a>
         </div>
       )}
     </DefaultLayout>
