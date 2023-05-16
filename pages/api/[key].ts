@@ -1,14 +1,15 @@
 import prisma from '@lib/prisma';
 export default async function handler(req, res) {
-    const { id } = req.query;
+    const { key } = req.query;
     
     if (req.method === 'GET') {
         const file = await prisma.file.findUnique({
             where: {
-                nanoId: id,
+                Key : key,
             },
         });
-        res.json(file.cid);
+        console.log(file);
+        res.json(file);
     }
     else {
         res.status(405).json({ error: 'Method not allowed' });

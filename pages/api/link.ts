@@ -1,40 +1,68 @@
-
 import prisma from '@lib/prisma';
-import { nanoid } from 'nanoid';
+import word from "words.json";
+
+let createUrl = async (cid)=> {
+  let nouns = word.nouns;
+  let adjectives = word.adjectives;
+
+  let randomNoun = nouns[Math.floor(Math.random() * nouns.length)].toLowerCase();
+  let randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)].toLowerCase();
+  let randomNumber = Math.floor(Math.random() * 100);
+
+  let key = randomAdjective + "-" + randomNoun + "-" + randomNumber.toString();
+
+  if (await isKeyInUse(key)) {
+    return key = await createUrl(cid);
+  }
+  return key;
+}
+
+let isKeyInUse = async (key: string) => {
+  const result = await prisma.file.findUnique({
+    where: {
+      Key: key,
+    },
+  });
+  if (result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function deleteEstuaryKey(key: string) {
+  try {
+    const response = await fetch('https://api.estuary.tech/user/api-keys/'+key, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + process.env.ESTUARY_KEY,
+        'Content-Type': 'application/json',
+      }
+    });
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      //add unique cid to db. If the cid already exists, return the existing id.
-      const { cid } = req.body;
-      const existing = await prisma.file.findUnique({
-        where: {
-          cid: cid,
-        },
-      });
-      if (existing) {
-        res.status(200).json(existing);
-        return;
-      }
-      let nanoId = nanoid(5);
-      const newLink = await prisma.file.create({
+      const { cid,name,size } = req.body;
+      const key = await createUrl(cid);
+      const result = await prisma.file.create({
         data: {
-          nanoId: nanoId,
-          cid: cid,
+          Key: key,
+          Cid: cid,
+          FileName: name,
+          FileSize: size,
         },
       });
-      res.status(200).json(newLink);
-      return;
+      res.status(200).json(result);
     } catch (error) {
-      console.log('asdasdasd')
-      console.error(error);
-      res.status(500).json({ error: error.message });
+      res.status(400).json({ message:  error.message });
     }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
-  }
+  } 
 }
-
-
-  
-
