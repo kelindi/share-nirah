@@ -1,0 +1,40 @@
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.downloadButton {
+    margin : 1rem;
+    border: #E2FCFC 1px solid;
+    background:transparent;
+    padding: 0.5rem 1rem;
+    transition: all .4s ease-in-out;
+    width : 20rem;
+    height: 5rem;
+    font-size: 2rem;
+    color : #E2FCFC;
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .downloadButton:hover{
+    background-color: #E2FCFC;
+    color: #0E1010;
+  }
+
+  .file{
+    display: inline-block;
+    gap: 0.4rem;
+    font-size:4rem;
+    max-width: 700px;
+    text-align: end;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+  }
