@@ -5,7 +5,7 @@ import styles from '@styles/Download.module.scss';
 
 export default async function Page({ params }: { params: { key: string } }) {
   const getFileInfo = async () => {
-    const response = await fetch(` http://localhost:3005/api/${params.key}`, {
+    const response = await fetch(` https://share.nirah.xyz/api/${params.key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
